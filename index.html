@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>BuildPro</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <!-- =======================================================
+  * Template Name: iLanding
+  * Template URL: https://bootstrapmade.com/ilanding-bootstrap-landing-page-template/
+  * Updated: Nov 12 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">BuildPro</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#services">Services</a></li>
+           
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="d-flex">
+        <a class="btn-signin-gray" href="BuildProFrontEnd/login.html">Log In</a> &nbsp;&nbsp;
+        <a class="btn-signin-blue" href="BuildProFrontEnd/register.html"> Sign Up</a>
+       
+      </div>
+
+      <style>
+        .btn-signin-gray {
+  background-color: #999999; /* Bootstrap's secondary/gray */
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 80px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-signin-gray:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+  color: #fff;
+}
+
+
+.btn-signin-blue {
+  background-color: #6db664; /* Bootstrap's secondary/gray */
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 80px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-signin-blue:hover {
+  background-color: #1a6cc4; /* Darker gray on hover */
+  color: #fff;
+}
+
+.hero-image {
+  width: 120% !important;
+  max-width: 900px !important; /* Increase max-width as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+      </style>
+      
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+              <div class="company-badge mb-4">
+                <i class="bi bi-tools me-2"></i>
+                Built for Your Project’s Success
+              </div>
+              
+              <h1 class="mb-4">
+                Find Skilled Experts <br>
+                For Every <br>
+                <span class="accent-text">Construction Need</span>
+              </h1>
+              
+              <p class="mb-4 mb-md-5">
+                Connecting you with trusted freelance professionals for all your construction projects. From renovations to repairs — fast, reliable, and tailored to your needs.
+              </p>
+              
+
+              <div class="hero-buttons">
+                <a href="BuildProFrontEnd/register.html" class="btn btn-primary me-0 me-sm-2 mx-1">Sign Up</a>
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
+                  <i class="bi bi-box-arrow-in-right me-1"></i>
+                  Log In
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+              <img src="assets/img/back.png" alt="Hero Image" class="img-fluid">
+
+             
+            </div>
+          </div>
+        </div>
+
+        <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div class="stat-content">
+                <h4>3x Won Awards</h4>
+                <p class="mb-0">Vestibulum ante ipsum</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-briefcase"></i>
+              </div>
+              <div class="stat-content">
+                <h4>6.5k Faucibus</h4>
+                <p class="mb-0">Nullam quis ante</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-graph-up"></i>
+              </div>
+              <div class="stat-content">
+                <h4>80k Mauris</h4>
+                <p class="mb-0">Etiam sit amet orci</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-award"></i>
+              </div>
+              <div class="stat-content">
+                <h4>6x Phasellus</h4>
+                <p class="mb-0">Vestibulum ante ipsum</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+        <div class="row gy-4 align-items-center justify-content-between">
+    
+          <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
+            <span class="about-meta">MORE ABOUT US</span>
+            <h2 class="about-title">Connecting Clients with Skilled Construction Freelancers</h2>
+            <p class="about-description">
+              BuildPro Solutions is an online platform designed to connect clients with qualified freelancers across the construction industry. Whether you need plumbing, electrical work, or masonry services, our platform simplifies the process by matching your job requests with skilled professionals.
+            </p>
+            <p class="about-description">
+              Traditional hiring methods are slow and unreliable. With BuildPro, clients can post jobs, receive competitive bids, and select the best expert based on reviews and ratings. Freelancers benefit by showcasing their skills, building a solid reputation, and finding consistent work.
+            </p>
+    
+            <div class="row feature-list-wrapper">
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check-circle-fill"></i> Post construction job requests</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Secure and transparent payments</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Real-time communication tools</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check-circle-fill"></i> Freelancer profiles & ratings</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Project management features</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Trusted and reliable network</li>
+                </ul>
+              </div>
+            </div>
+    
+            
+          </div>
+    
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="image-wrapper">
+              <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                <img src="assets/img/about-5.webp" alt="Construction Collaboration" class="img-fluid main-image rounded-4">
+                <img src="assets/img/about-2.webp" alt="Freelancers at Work" class="img-fluid small-image rounded-4">
+              </div>
+              <div class="experience-badge floating">
+                <h3>15+ <span>Years</span></h3>
+                <p>Of experience in construction tech</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    
+    </section><!-- /About Section -->
+    
+
+    <section id="features" class="features section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Platform Objectives</h2>
+        <p>Explore the core goals behind our freelancing construction service platform.</p>
+      </div>
+    
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+            <li class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                <h4>Freelancer & Client Features</h4>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+                <h4>Platform Features</h4>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                <h4>Scalability & Compliance</h4>
+              </a>
+            </li>
+          </ul>
+        </div>
+    
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+          <!-- Tab 1 -->
+          <div class="tab-pane fade active show" id="features-tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>Empowering Freelancers and Clients</h3>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Create profiles, post gigs, and showcase completed projects and blogs.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Enable users to filter services by location, price, rating, and availability.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Allow service requests and freelancer bidding for flexible matching.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Host a discussion forum for real-time problem-solving and knowledge sharing.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/features-illustration-1.webp" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+    
+          <!-- Tab 2 -->
+          <div class="tab-pane fade" id="features-tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>Powerful Platform Tools</h3>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Blog section for freelancers to build credibility and attract clients.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Rating and review system to foster trust and accountability.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Secure, transparent platform with strong data protection.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Integrated messaging system for real-time communication.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Visual dashboard to monitor income, feedback, and progress.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/features-illustration-2.webp" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+    
+          <!-- Tab 3 -->
+          <div class="tab-pane fade" id="features-tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>Scalability, Compliance & Sustainability</h3>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Designed to scale for both small jobs and complex multi-stage projects.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Accessible design for users of all digital literacy levels and devices.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Built-in analytics for freelancers and clients to make data-driven decisions.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Promotes eco-friendly practices by supporting green construction methods.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Integration with local legal systems to ensure regulatory compliance.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/features-illustration-3.webp" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+<!-- Features Cards Section -->
+<section id="features-cards" class="features-cards section">
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="feature-box orange">
+          <i class="bi bi-tools"></i>
+          <h4>Skilled Freelancers</h4>
+          <p>Connect with verified local experts across all major construction categories, from masonry to roofing.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="feature-box blue">
+          <i class="bi bi-check2-circle"></i>
+          <h4>Quality Assurance</h4>
+          <p>All projects are monitored for quality and satisfaction, ensuring reliable and professional service delivery.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="feature-box green">
+          <i class="bi bi-clock-history"></i>
+          <h4>On-Time Service</h4>
+          <p>Get your job done on schedule with prompt service providers dedicated to meeting deadlines.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="feature-box red">
+          <i class="bi bi-shield-lock"></i>
+          <h4>Secure Payments</h4>
+          <p>Payments are handled securely through the platform with clear milestones and client protection.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+    </div>
+  </div>
+</section><!-- /Features Cards Section -->
+
+<!-- Call To Action Section -->
+<section id="call-to-action" class="call-to-action section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row content justify-content-center align-items-center position-relative">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 class="display-4 mb-4">Start Your Construction Journey with BuildPro</h2>
+        <p class="mb-4">Whether you're a skilled freelancer or a homeowner in need of expert help, BuildPro connects you with trusted construction professionals across Sri Lanka.</p>
+        <a href="#get-started" class="btn btn-cta">Get Started</a>
+      </div>
+
+      <!-- Abstract Background Elements -->
+      <div class="shape shape-1">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M47.1,-57.1C59.9,-45.6,68.5,-28.9,71.4,-10.9C74.2,7.1,71.3,26.3,61.5,41.1C51.7,55.9,35,66.2,16.9,69.2C-1.3,72.2,-21,67.8,-36.9,57.9C-52.8,48,-64.9,32.6,-69.1,15.1C-73.3,-2.4,-69.5,-22,-59.4,-37.1C-49.3,-52.2,-32.8,-62.9,-15.7,-64.9C1.5,-67,34.3,-68.5,47.1,-57.1Z" transform="translate(100 100)"></path>
+        </svg>
+      </div>
+
+      <div class="shape shape-2">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M41.3,-49.1C54.4,-39.3,66.6,-27.2,71.1,-12.1C75.6,3,72.4,20.9,63.3,34.4C54.2,47.9,39.2,56.9,23.2,62.3C7.1,67.7,-10,69.4,-24.8,64.1C-39.7,58.8,-52.3,46.5,-60.1,31.5C-67.9,16.4,-70.9,-1.4,-66.3,-16.6C-61.8,-31.8,-49.7,-44.3,-36.3,-54C-22.9,-63.7,-8.2,-70.6,3.6,-75.1C15.4,-79.6,28.2,-58.9,41.3,-49.1Z" transform="translate(100 100)"></path>
+        </svg>
+      </div>
+
+      <!-- Dot Pattern Groups -->
+      <div class="dots dots-1">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+          </pattern>
+          <rect width="100" height="100" fill="url(#dot-pattern)"></rect>
+        </svg>
+      </div>
+
+      <div class="dots dots-2">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="dot-pattern-2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+          </pattern>
+          <rect width="100" height="100" fill="url(#dot-pattern-2)"></rect>
+        </svg>
+      </div>
+
+      <div class="shape shape-3">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M43.3,-57.1C57.4,-46.5,71.1,-32.6,75.3,-16.2C79.5,0.2,74.2,19.1,65.1,35.3C56,51.5,43.1,65,27.4,71.7C11.7,78.4,-6.8,78.3,-23.9,72.4C-41,66.5,-56.7,54.8,-65.4,39.2C-74.1,23.6,-75.8,4,-71.7,-13.2C-67.6,-30.4,-57.7,-45.2,-44.3,-56.1C-30.9,-67,-15.5,-74,0.7,-74.9C16.8,-75.8,33.7,-70.7,43.3,-57.1Z" transform="translate(100 100)"></path>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Call To Action Section -->
+
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Clients</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projects</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hours Of Support</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Workers</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+<!-- Services Section -->
+<section id="services" class="services section light-background">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <p>Explore a range of expert services provided by trusted professionals across the construction industry.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-4">
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card d-flex">
+          <div class="icon flex-shrink-0">
+            <i class="bi bi-tools"></i>
+          </div>
+          <div>
+            <h3>Home Renovation</h3>
+            <p>Transform your home with expert renovation services tailored to your style and budget.</p>
+            <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div><!-- End Service Card -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card d-flex">
+          <div class="icon flex-shrink-0">
+            <i class="bi bi-house-door"></i>
+          </div>
+          <div>
+            <h3>Plumbing & Electrical</h3>
+            <p>Reliable installation and maintenance services for all your plumbing and electrical needs.</p>
+            <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div><!-- End Service Card -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-card d-flex">
+          <div class="icon flex-shrink-0">
+            <i class="bi bi-bricks"></i>
+          </div>
+          <div>
+            <h3>Masonry & Tiling</h3>
+            <p>Professional masonry and tiling work to enhance the beauty and durability of your spaces.</p>
+            <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div><!-- End Service Card -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-card d-flex">
+          <div class="icon flex-shrink-0">
+            <i class="bi bi-tree"></i>
+          </div>
+          <div>
+            <h3>Landscaping & Outdoor</h3>
+            <p>Design and maintain stunning outdoor spaces with our landscaping and garden experts.</p>
+            <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div><!-- End Service Card -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Services Section -->
+
+
+
+
+    <!-- Faq Section -->
+<!-- FAQ Section for BuildPro -->
+<section class="faq-9 faq section light-background" id="faq">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-5" data-aos="fade-up">
+        <h2 class="faq-title">Need Help? Explore Our FAQs</h2>
+        <p class="faq-description">Find answers to common questions about using BuildPro — whether you're a client or a freelancer.</p>
+        <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+          <!-- Keep the existing SVG Arrow -->
+          <!-- No changes needed here for branding -->
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+        <div class="faq-container">
+
+          <div class="faq-item faq-active">
+            <h3>How do I post a job request on BuildPro?</h3>
+            <div class="faq-content">
+              <p>Log in to your BuildPro account, go to the dashboard, and click on "Post a Job". Fill in the service type, location, and project details, then publish it for freelancers to view and bid.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do freelancers get hired?</h3>
+            <div class="faq-content">
+              <p>Freelancers can apply to job requests or be contacted directly through their profile. Once hired, project milestones and communication are managed within the BuildPro platform.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>Is there a verification process for service providers?</h3>
+            <div class="faq-content">
+              <p>Yes, all freelancers must submit valid identification and portfolio evidence for verification. Verified accounts are labeled for client trust.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>How is payment handled on BuildPro?</h3>
+            <div class="faq-content">
+              <p>Clients fund the project upon agreement. BuildPro holds the payment in escrow and releases it when both parties confirm milestone completion or full delivery.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>What happens in case of disputes?</h3>
+            <div class="faq-content">
+              <p>BuildPro provides a dispute resolution system. If any issue arises, both parties can submit evidence, and our support team will mediate the situation fairly.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>Can I subscribe to a freelancer’s services?</h3>
+            <div class="faq-content">
+              <p>Yes, BuildPro offers subscription options for recurring services. Visit the freelancer's profile and choose the subscription plan that suits your needs.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- /FAQ Section for BuildPro -->
+
+
+    <!-- Call To Action 2 Section -->
+    <section id="call-to-action-2" class="call-to-action-2 section dark-background">
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Need Construction Help Fast?</h3>
+              <p>Connect with trusted local experts on BuildPro — your all-in-one platform for finding, hiring, and managing construction professionals with ease.</p>
+              <a class="cta-btn" href="#">Call To Action</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action 2 Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Have questions? Contact us anytime—we’re here to help!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-5">
+            <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+              <h3>Contact Info</h3>
+              <p>If you have questions or need assistance, we're here to help! Reach out to our support team for personalized guidance and quick responses.</p>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div class="content">
+                  <h4>Our Location</h4>
+                  <p>A108 Adam Street</p>
+                  <p>New York, NY 535022</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div class="content">
+                  <h4>Phone Number</h4>
+                  <p>+94 70 455 6640/p>
+                  <p>0112 11 11 11</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div class="content">
+                  <h4>Email Address</h4>
+                  <p>e2046301@bit.uom.lk</p>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+              <h3>Get In Touch</h3>
+              <p>Have questions or want to learn more about our tuition programs? Contact us anytime—we’re here to support your learning journey!</p>
+
+              <form id="contactForm">
+                <div class="row gy-4">
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  </div>
+              
+                  <div class="col-md-6">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                  </div>
+              
+                  <div class="col-12">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                  </div>
+              
+                  <div class="col-12">
+                    <textarea name="message" rows="6" class="form-control" placeholder="Message" required></textarea>
+                  </div>
+              
+                  <div class="col-12 text-center">
+                    <button type="submit" class="btn">Send Message</button>
+                    <div class="sent-message" style="display:none;">Your message has been sent. Thank you!</div>
+                    <div class="error-message" style="display:none;color:red;"></div>
+                  </div>
+                </div>
+              </form>
+              
+              <script>
+                document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                  e.preventDefault();
+                  const form = e.target;
+              
+                  const formData = new URLSearchParams();
+                  for (const field of form.elements) {
+                    if (field.name) formData.append(field.name, field.value);
+                  }
+              
+                  try {
+                    const res = await fetch('http://localhost:6060/customerContact/contact', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                      },
+                      body: formData.toString()
+                    });
+              
+                    let data = {};
+                    try {
+                      data = await res.json(); // <- This won't crash your main try
+                    } catch (jsonError) {
+                      console.warn("Response is not valid JSON. Using empty object.");
+                    }
+              
+                    if (res.ok) {
+                      await Swal.fire({
+                        icon: 'success',
+                        title: 'Message sent successfully!',
+                        text: data.message || "We will get back to you soon.",
+                        showConfirmButton: false, 
+                        confirmButtonColor: '#4CAF50'
+                      });
+                      window.location.href = 'http://localhost:8012/BuildProHome/';
+                    } else {
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Message Failed',
+                        text: data.message || 'Server error occurred.',
+                        confirmButtonColor: '#d33'
+                      });
+                    }
+              
+                  } catch (error) {
+                    console.error("Fetch error:", error);
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Network Error',
+                      text: 'Failed to send message. Please try again later.',
+                      confirmButtonColor: '#d33'
+                    });
+                  }
+                });
+              </script>
+              
+              
+              
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">BuildPro</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Hic solutasetp</h4>
+          <ul>
+            <li><a href="#">Molestiae accusamus iure</a></li>
+            <li><a href="#">Excepturi dignissimos</a></li>
+            <li><a href="#">Suscipit distinctio</a></li>
+            <li><a href="#">Dilecta</a></li>
+            <li><a href="#">Sit quas consectetur</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Nobis illum</h4>
+          <ul>
+            <li><a href="#">Ipsam</a></li>
+            <li><a href="#">Laudantium dolorum</a></li>
+            <li><a href="#">Dinera</a></li>
+            <li><a href="#">Trodelas</a></li>
+            <li><a href="#">Flexo</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">BuildPro</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

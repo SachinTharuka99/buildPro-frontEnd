@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <!-- Mirrored from laravel.spruko.com/admitro/Vertical-IconSidedar-Light/index by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Apr 2025 05:53:03 GMT -->
+  <!-- Added by HTTrack --><meta
+    http-equiv="content-type"
+    content="text/html;charset=UTF-8"
+  /><!-- /Added by HTTrack -->
+  <head>
+    <!-- Meta data -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta
+      content="Admitro - Laravel Bootstrap Admin Template"
+      name="description"
+    />
+    <meta content="Spruko Technologies Private Limited" name="author" />
+    <meta
+      name="keywords"
+      content="laravel admin dashboard, best laravel admin panel, laravel admin dashboard, php admin panel template, blade template in laravel, laravel dashboard template, laravel template bootstrap, laravel simple admin panel,laravel dashboard template,laravel bootstrap 4 template, best admin panel for laravel,laravel admin panel template, laravel admin dashboard template, laravel bootstrap admin template, laravel admin template bootstrap 4"
+    />
+
+    <!-- Title -->
+    <title>Admitro - Admin Panel HTML template</title>
+
+    <!--Favicon -->
+    <link
+      rel="icon"
+      href="assets/images/brand/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!--Bootstrap css -->
+    <link
+      href="assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Style css -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/dark.css" rel="stylesheet" />
+    <link href="assets/css/skin-modes.css" rel="stylesheet" />
+
+    <!-- Animate css -->
+    <link href="assets/css/animated.css" rel="stylesheet" />
+
+    <!--Sidemenu css -->
+    <link href="assets/css/sidemenu.css" rel="stylesheet" />
+
+    <!-- P-scroll bar css-->
+    <link href="assets/plugins/p-scrollbar/p-scrollbar.css" rel="stylesheet" />
+
+    <!---Icons css-->
+    <link href="assets/css/icons.css" rel="stylesheet" />
+
+    <!-- Simplebar css -->
+    <link rel="stylesheet" href="assets/plugins/simplebar/css/simplebar.css" />
+
+    <!-- Color Skin css -->
+    <link
+      id="theme"
+      href="assets/colors/color1.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Switcher css -->
+    <link rel="stylesheet" href="assets/switcher/css/switcher.css" />
+    <link rel="stylesheet" href="assets/switcher/demo.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+
+        // Redirect if token is missing or empty
+        if (!token || token === "undefined" || token === "null") {
+          localStorage.clear(); // Clean up just in case
+          window.location.href = "login.html";
+          return;
+        }
+
+        const name = localStorage.getItem("name");
+        const imageUrl = localStorage.getItem("imageUrl");
+        const email = localStorage.getItem("email");
+
+        console.log("Image URL from localStorage:", imageUrl);
+        console.log("User name from localStorage:", name);
+
+        // Assign profile image if present
+        if (imageUrl) {
+          const mainProfileImage = document.getElementById("profile-image");
+          if (mainProfileImage) {
+            mainProfileImage.src = imageUrl;
+          }
+
+          document.querySelectorAll(".profile-image").forEach((el) => {
+            el.src = imageUrl;
+          });
+        }
+
+        // Show username in all elements
+        document.querySelectorAll(".username-display").forEach((el) => {
+          el.textContent = name?.trim() || "Guest";
+        });
+
+        // Show email in all elements
+        document.querySelectorAll(".email_show").forEach((el) => {
+          el.textContent = email?.trim() || "Guest";
+        });
+
+        // Log image src to ensure correct assignment
+        const profileImg = document.getElementById("profile-image");
+        if (profileImg) {
+          console.log("Profile image src:", profileImg.src);
+        }
+      });
+    </script>
+
+    <script>
+      function handleLogout(event) {
+        event.preventDefault(); // Prevent default navigation
+        localStorage.clear(); // Clear user data
+        window.location.href = "login.html"; // Redirect manually
+      }
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .chat-container {
+        display: flex;
+        height: 100vh;
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 320px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+      }
+
+      .sidebar-header {
+        padding: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .sidebar-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 15px;
+      }
+
+      .search-bar {
+        position: relative;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px 40px 12px 16px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: #8422c5;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #a0aec0;
+      }
+
+      .contacts-list {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .contact-item:hover {
+        background: rgba(34, 197, 94, 0.1);
+        border-left-color: #6e22c5;
+      }
+
+      .contact-item.active {
+        background: rgba(34, 197, 94, 0.15);
+        border-left-color: #9f22c5;
+      }
+
+      .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 12px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #56db8d, #c8bdeb);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .status-dot {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 12px;
+        height: 12px;
+        background: #22c55e;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .contact-name {
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 4px;
+      }
+
+      .contact-message {
+        font-size: 13px;
+        color: #759671;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .contact-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .contact-time {
+        font-size: 12px;
+        color: #a0c0a0;
+        margin-bottom: 4px;
+      }
+
+      .unread-badge {
+        background: #22c55e;
+        color: white;
+        border-radius: 10px;
+        padding: 2px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        min-width: 18px;
+        text-align: center;
+      }
+
+      /* Main Chat Area */
+      .chat-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+      }
+
+      .chat-header {
+        padding: 20px 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .chat-header-info {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+
+      .chat-header-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 12px;
+        background: linear-gradient(135deg, #4ade80, #16a34a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+      }
+
+      .chat-header-details h3 {
+        color: #2d3748;
+        font-size: 16px;
+        margin-bottom: 2px;
+      }
+
+      .chat-header-details p {
+        color: #22c55e;
+        font-size: 13px;
+      }
+
+      .chat-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .action-btn {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: rgba(34, 197, 94, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #22c55e;
+      }
+
+      .action-btn:hover {
+        background: rgba(34, 197, 94, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* .messages-area {
+        flex: 1;
+        padding: 20px 25px;
+        overflow-y: auto;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+        height: 500px;
+        overflow-y: auto;
+        padding: 15px;
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.3'%3E%3Cpath d='M10 1C4.477 1 0 4.582 0 9c0 2.206 1.26 4.19 3.264 5.66l-.764 3.013a.5.5 0 0 0 .677.58l3.418-1.365c.94.192 1.937.297 2.905.297 5.523 0 10-3.582 10-8s-4.477-8-10-8z'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 40px 40px;
+        border-radius: 8px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+      } */
+
+      .messages-area {
+  position: relative;
+  flex: 1;
+  padding: 20px 25px;
+  overflow-y: auto;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+/* Background image with low opacity */
+.messages-area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("assets/images/chatBackground.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.09; /* Set your desired opacity */
+  z-index: -1;
+}
+
+
+      .message {
+        display: flex;
+        margin-bottom: 20px;
+        animation: slideUp 0.3s ease;
+      }
+
+      .message.sent {
+        justify-content: flex-end;
+      }
+
+      .message-content {
+        max-width: 70%;
+        padding: 12px 18px;
+        border-radius: 18px;
+        position: relative;
+      }
+
+      .message.received .message-content {
+        background: rgba(226, 226, 226, 0.9);
+        color: #2d3748;
+        border-bottom-left-radius: 6px;
+      }
+
+      .message.sent .message-content {
+        background: linear-gradient(135deg, #56db8d, #c8bdeb);
+        color: white;
+        border-bottom-right-radius: 6px;
+      }
+
+      .message-time {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 4px;
+        text-align: right;
+      }
+
+      .message.received .message-time {
+        text-align: left;
+      }
+
+      .input-area {
+        padding: 20px 25px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .input-container {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+      }
+
+      .input-wrapper {
+        flex: 1;
+        position: relative;
+      }
+
+      .message-input {
+        width: 100%;
+        min-height: 44px;
+        max-height: 120px;
+        padding: 12px 50px 12px 18px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 22px;
+        font-family: inherit;
+        font-size: 14px;
+        resize: none;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .message-input:focus {
+        outline: none;
+        border-color: #8422c5;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+      }
+
+      .attachment-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: rgba(34, 197, 94, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #22c55e;
+      }
+
+      .attachment-btn:hover {
+        background: rgba(34, 197, 94, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .file-input {
+        display: none;
+      }
+
+      .send-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: linear-gradient(135deg, #56db8d, #c8bdeb);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+      }
+
+      .send-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+      }
+
+      .send-btn:active {
+        transform: scale(0.95);
+      }
+
+      /* File Preview Styles */
+      .file-preview-container {
+        display: none;
+        padding: 15px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+      }
+
+      .file-preview-container.show {
+        display: block;
+      }
+
+      .file-preview {
+        display: flex;
+        align-items: center;
+        background: rgba(34, 197, 94, 0.1);
+        border-radius: 12px;
+        padding: 12px;
+        margin-bottom: 8px;
+        position: relative;
+      }
+
+      .file-preview img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 12px;
+      }
+
+      .file-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #4ade80, #16a34a);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        margin-right: 12px;
+      }
+
+      .file-info {
+        flex: 1;
+      }
+
+      .file-name {
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 4px;
+      }
+
+      .file-size {
+        font-size: 12px;
+        color: #718096;
+      }
+
+      .remove-file {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 24px;
+        height: 24px;
+        background: #e53e3e;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .remove-file:hover {
+        transform: scale(1.1);
+      }
+
+      /* Message with attachments */
+      .message-attachment {
+        margin-top: 8px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .message-attachment img {
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .document-attachment {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 12px;
+        border-radius: 12px;
+        margin-top: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .document-attachment:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .document-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        font-size: 18px;
+      }
+
+      .document-info {
+        flex: 1;
+      }
+
+      .document-name {
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .document-size {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .sidebar {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          z-index: 1000;
+          transform: translateX(-100%);
+        }
+
+        .sidebar.mobile-open {
+          transform: translateX(0);
+        }
+
+        .chat-main {
+          width: 100%;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+          width: 36px;
+          height: 36px;
+          border: none;
+          background: rgba(34, 197, 94, 0.1);
+          border-radius: 8px;
+          margin-right: 12px;
+          cursor: pointer;
+          color: #22c55e;
+        }
+
+        .message-content {
+          max-width: 85%;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .mobile-menu-btn {
+          display: none;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(34, 197, 94, 0.3);
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(34, 197, 94, 0.5);
+      }
+    </style>
+  </head>
+
+  <body class="app sidebar-mini">
+    <!-- Start Switcher -->
+    <div class="switcher-wrapper">
+      <div class="demo_changer">
+        <div class="demo-icon bg_dark">
+          <i class="fa fa-cog fa-spin text_primary"></i>
+        </div>
+        <div class="form_holder switcher-sidebar">
+          <div class="row">
+            <div class="predefined_styles">
+              <div class="swichermainleft">
+                <h4>Skin Modes</h4>
+                <div class="switch_section">
+                  <div class="switch-toggle d-flex">
+                    <span class="mr-auto">Default Mode</span>
+                    <div class="onoffswitch2">
+                      <input
+                        type="radio"
+                        name="onoffswitch2"
+                        id="myonoffswitch3"
+                        class="onoffswitch2-checkbox"
+                        checked
+                      />
+                      <label
+                        for="myonoffswitch3"
+                        class="onoffswitch2-label"
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="switch-toggle d-flex">
+                    <span class="mr-auto">Dark Mode</span>
+                    <div class="onoffswitch2">
+                      <input
+                        type="radio"
+                        name="onoffswitch2"
+                        id="myonoffswitch14"
+                        class="onoffswitch2-checkbox"
+                      />
+                      <label
+                        for="myonoffswitch14"
+                        class="onoffswitch2-label"
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+              <div class="swichermainleft">
+                <h4>Header Styles Mode</h4>
+                <div class="switch_section">
+                  <div class="switch-toggle d-flex light-switcher">
+                    <span class="mr-auto">Light Menu</span>
+                    <div class="onoffswitch2">
+                      <input
+                        type="radio"
+                        name="onoffswitch2"
+                        id="myonoffswitch10"
+                        class="onoffswitch2-checkbox"
+                      />
+                      <label
+                        for="myonoffswitch10"
+                        class="onoffswitch2-label"
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="switch-toggle d-flex dark-switcher">
+                    <span class="mr-auto">Dark Menu</span>
+                    <div class="onoffswitch2">
+                      <input
+                        type="radio"
+                        name="onoffswitch2"
+                        id="myonoffswitch13"
+                        class="onoffswitch2-checkbox"
+                      />
+                      <label
+                        for="myonoffswitch13"
+                        class="onoffswitch2-label"
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="switch-toggle d-flex">
+                    <span class="mr-auto">Color Menu</span>
+                    <div class="onoffswitch2">
+                      <input
+                        type="radio"
+                        name="onoffswitch2"
+                        id="myonoffswitch11"
+                        class="onoffswitch2-checkbox"
+                      />
+                      <label
+                        for="myonoffswitch11"
+                        class="onoffswitch2-label"
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="switch-toggle d-flex">
+                    <span class="mr-auto">Graident Menu</span>
+                    <div class="onoffswitch2">
+                      <input
+                        type="radio"
+                        name="onoffswitch2"
+                        id="myonoffswitch12"
+                        class="onoffswitch2-checkbox"
+                      />
+                      <label
+                        for="myonoffswitch12"
+                        class="onoffswitch2-label"
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="skin-theme-switcher">
+                <div class="swichermainleft">
+                  <h4>Leftmenu Styles Mode</h4>
+                  <div class="switch_section">
+                    <div class="switch-toggle d-flex light-switcher">
+                      <span class="mr-auto">Light Menu</span>
+                      <div class="onoffswitch2">
+                        <input
+                          type="radio"
+                          name="onoffswitch2"
+                          id="myonoffswitch1"
+                          class="onoffswitch2-checkbox"
+                        />
+                        <label
+                          for="myonoffswitch1"
+                          class="onoffswitch2-label"
+                        ></label>
+                      </div>
+                    </div>
+                    <div class="switch-toggle d-flex dark-switcher">
+                      <span class="mr-auto">Dark Menu</span>
+                      <div class="onoffswitch2">
+                        <input
+                          type="radio"
+                          name="onoffswitch2"
+                          id="myonoffswitch2"
+                          class="onoffswitch2-checkbox"
+                        />
+                        <label
+                          for="myonoffswitch2"
+                          class="onoffswitch2-label"
+                        ></label>
+                      </div>
+                    </div>
+                    <div class="switch-toggle d-flex">
+                      <span class="mr-auto">Color Menu</span>
+                      <div class="onoffswitch2">
+                        <input
+                          type="radio"
+                          name="onoffswitch2"
+                          id="myonoffswitch"
+                          class="onoffswitch2-checkbox"
+                        />
+                        <label
+                          for="myonoffswitch"
+                          class="onoffswitch2-label"
+                        ></label>
+                      </div>
+                    </div>
+                    <div class="switch-toggle d-flex">
+                      <span class="mr-auto">Gradient-Color Menu</span>
+                      <div class="onoffswitch2">
+                        <input
+                          type="radio"
+                          name="onoffswitch2"
+                          id="myonoffswitch5"
+                          class="onoffswitch2-checkbox"
+                        />
+                        <label
+                          for="myonoffswitch5"
+                          class="onoffswitch2-label"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Switcher -->
+
+    <!---Global-loader-->
+    <div id="global-loader">
+      <img src="assets/images/svgs/loader.svg" alt="loader" />
+    </div>
+    <!--- End Global-loader-->
+    <!-- Page -->
+    <div class="page">
+      <div class="page-main">
+        <aside class="app-sidebar">
+          <div class="app-sidebar__logo">
+            <a class="header-brand" href="index.html">
+              <img
+                src="assets/images/brand/logo.png"
+                class="header-brand-img desktop-lgo"
+                alt="Admintro logo"
+              />
+              <img
+                src="assets/images/brand/logo1.png"
+                class="header-brand-img dark-logo"
+                alt="Admintro logo"
+              />
+              <img
+                src="assets/images/brand/favicon.png"
+                class="header-brand-img mobile-logo"
+                alt="Admintro logo"
+              />
+              <img
+                src="assets/images/brand/favicon1.png"
+                class="header-brand-img darkmobile-logo"
+                alt="Admintro logo"
+              />
+            </a>
+          </div>
+          <div class="app-sidebar__user">
+            <div class="dropdown user-pro-body text-center">
+              <div class="user-pic">
+                <img
+                  id="profile-image"
+                  src=""
+                  alt="user-img"
+                  class="avatar-xl rounded-circle mb-1"
+                />
+              </div>
+              <div class="user-info">
+                <h5 class="mb-1">
+                  <span class="username-display"></span>
+                  <i class="ion-checkmark-circled text-success fs-12"></i>
+                </h5>
+                <span class="email_show"></span>
+              </div>
+            </div>
+            <div class="sidebar-navs">
+              <ul class="nav nav-pills-circle">
+                <li
+                  class="nav-item"
+                  data-placement="top"
+                  data-toggle="tooltip"
+                  title="Profile"
+                >
+                  <a class="icon" href="tutorProfile.html">
+                    <i class="las la-user-circle header-icons"></i>
+
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  data-placement="top"
+                  data-toggle="tooltip"
+                  title="Explore"
+                >
+                  <a class="icon" href="AllGigView.html">
+                    <i class="las la-project-diagram header-icons"></i>
+                  </a>
+                </li>
+
+              
+                <li
+                  class="nav-item"
+                  data-placement="top"
+                  data-toggle="tooltip"
+                  title="Projects"
+                >
+                  <a href="login.html" class="icon">
+                    <i class="las la-file-alt header-icons"></i>
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  data-placement="top"
+                  data-toggle="tooltip"
+                  title="Settins"
+                >
+                  <a class="icon" href="login.html">
+                    <i class="las la-cog header-icons"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ul class="side-menu app-sidebar3">
+            <li class="slide">
+              <a class="side-menu__item" href="dashboard.html">
+                <svg
+                  class="side-menu__icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path
+                    d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"
+                  />
+                </svg>
+                <span class="side-menu__label">Dashboard</span></a
+              >
+            </li>
+
+            <li class="slide">
+              <a class="side-menu__item" href="freelancerAllGigView.html">
+                <svg
+                  class="side-menu__icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path
+                    d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"
+                  />
+                </svg>
+                <span class="side-menu__label">My Gigs</span></a
+              >
+            </li>
+
+            <li class="slide">
+              <a class="side-menu__item" href="tutorShowCaseArea.html">
+                <svg 
+                class="side-menu__icon" 
+                xmlns="http://www.w3.org/2000/svg" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                width="24"
+              >
+                <path d="M0 0h24v24H0V0z" fill="none"/>
+                <path d="M20 5h-3.17l-1.84-2H8.99L7.15 5H4c-1.1 0-2 .9-2 2v12c0 
+                         1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 
+                         13c-2.76 0-5-2.24-5-5s2.24-5 
+                         5-5 5 2.24 5 5-2.24 5-5 
+                         5zm0-8c-1.66 0-3 1.34-3 
+                         3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+                <span class="side-menu__label">My Posts</span></a>
+            </li>
+
+            <li class="slide">
+              <a class="side-menu__item" href="tutorDiscussionForum.html">
+                <svg 
+                class="side-menu__icon" 
+                xmlns="http://www.w3.org/2000/svg" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                width="24" 
+                fill="currentColor"
+                >
+                <path d="M0 0h24v24H0V0z" fill="none"/>
+                <path d="M20 6h-8v5H4v9l4-4h12z"/>
+                </svg>
+                
+                <span class="side-menu__label">Discussion Forum</span></a>
+              </li>
+            <li class="slide">
+              <a class="side-menu__item" href="chatBot.html">
+                <svg
+                  class="side-menu__icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  fill="currentColor"
+                >
+                  <!-- AI Robot Icon -->
+                  <path d="M12 2a2 2 0 00-2 2v2H7a3 3 0 00-3 3v7a3 3 0 003 3h10a3 3 0 003-3v-7a3 3 0 00-3-3h-3V4a2 2 0 00-2-2zm-1 10a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM9 15h6a1 1 0 110 2H9a1 1 0 110-2zm-4-5h2v2H5v-2zm12 0h2v2h-2v-2z"/>
+                </svg>
+                <span class="side-menu__label">Smart Project Planner</span>
+              </a>
+            </li>
+          
+          </ul>
+        </aside>
+        <!--aside closed-->
+        <!-- App-Content -->
+        <div class="app-content main-content">
+          <div class="side-app">
+            <!--app header-->
+            <div class="app-header header">
+              <div class="container-fluid">
+                <div class="d-flex">
+                  <a class="header-brand" href="index.html">
+                    <img
+                      src="assets/images/brand/logo.png"
+                      class="header-brand-img desktop-lgo"
+                      alt="Admintro logo"
+                    />
+                    <img
+                      src="assets/images/brand/logo1.png"
+                      class="header-brand-img dark-logo"
+                      alt="Admintro logo"
+                    />
+                    <img
+                      src="assets/images/brand/favicon.png"
+                      class="header-brand-img mobile-logo"
+                      alt="Admintro logo"
+                    />
+                    <img
+                      src="assets/images/brand/favicon1.png"
+                      class="header-brand-img darkmobile-logo"
+                      alt="Admintro logo"
+                    />
+                  </a>
+                  <div class="app-sidebar__toggle" data-toggle="sidebar">
+                    <a class="open-toggle" href="login.html">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-align-left header-icon mt-1"
+                      >
+                        <line x1="17" y1="10" x2="3" y2="10"></line>
+                        <line x1="21" y1="6" x2="3" y2="6"></line>
+                        <line x1="21" y1="14" x2="3" y2="14"></line>
+                        <line x1="17" y1="18" x2="3" y2="18"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <!-- SEARCH -->
+                  <div class="d-flex order-lg-2 ml-auto">
+                    <a
+                      href="login.html"
+                      data-toggle="search"
+                      class="nav-link nav-link-lg d-md-none navsearch"
+                    >
+                      <svg
+                        class="header-icon search-icon"
+                        x="1008"
+                        y="1248"
+                        viewBox="0 0 24 24"
+                        height="100%"
+                        width="100%"
+                        preserveAspectRatio="xMidYMid meet"
+                        focusable="false"
+                      >
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                          d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                        />
+                      </svg>
+                    </a>
+                    <div class="dropdown header-fullscreen">
+                      <a
+                        class="nav-link icon full-screen-link p-0"
+                        id="fullscreen-button"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="header-icon"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M10 4L8 4 8 8 4 8 4 10 10 10zM8 20L10 20 10 14 4 14 4 16 8 16zM20 14L14 14 14 20 16 20 16 16 20 16zM20 8L16 8 16 4 14 4 14 10 20 10z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="dropdown header-message">
+                      <a class="nav-link icon" href="chat.html">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="header-icon"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M20,2H4C2.897,2,2,2.897,2,4v12c0,1.103,0.897,2,2,2h3v3.767L13.277,18H20c1.103,0,2-0.897,2-2V4C22,2.897,21.103,2,20,2z M20,16h-7.277L9,18.233V16H4V4h16V16z"
+                          />
+                          <path d="M7 7H17V9H7zM7 11H14V13H7z" />
+                        </svg>
+                        <!-- <span class="badge badge-success side-badge">3</span> -->
+                      </a>
+                    </div>
+                    
+                    <div class="dropdown header-notify">
+                      <a class="nav-link icon" data-toggle="dropdown">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="header-icon"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707C3.105 15.48 3 15.734 3 16v2c0 .553.447 1 1 1h16c.553 0 1-.447 1-1v-2c0-.266-.105-.52-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707C6.895 14.52 7 14.266 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zM12 22c1.311 0 2.407-.834 2.818-2H9.182C9.593 21.166 10.689 22 12 22z"
+                          />
+                        </svg>
+                        <!-- <span class="pulse"></span> -->
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated"
+                      >
+                        <div class="dropdown-header">
+                          <h6 class="mb-0">Notifications</h6>
+                          <span class="badge badge-pill badge-primary ml-auto"
+                            >View all</span
+                          >
+                        </div>
+                        <div class="notify-menu">
+                          <a
+                            href="login.html"
+                            class="dropdown-item border-bottom d-flex pl-4"
+                          >
+                            <div
+                              class="notifyimg bg-info-transparent text-info"
+                            >
+                              <i class="ti-comment-alt"></i>
+                            </div>
+                            <div>
+                              <div class="font-weight-normal1">
+                                Message Sent.
+                              </div>
+                              <div class="small text-muted">3 hours ago</div>
+                            </div>
+                          </a>
+                          <a
+                            href="login.html"
+                            class="dropdown-item border-bottom d-flex pl-4"
+                          >
+                            <div
+                              class="notifyimg bg-primary-transparent text-primary"
+                            >
+                              <i class="ti-shopping-cart-full"></i>
+                            </div>
+                            <div>
+                              <div class="font-weight-normal1">
+                                Order Placed
+                              </div>
+                              <div class="small text-muted">5 hour ago</div>
+                            </div>
+                          </a>
+                          <a
+                            href="login.html"
+                            class="dropdown-item border-bottom d-flex pl-4"
+                          >
+                            <div
+                              class="notifyimg bg-warning-transparent text-warning"
+                            >
+                              <i class="ti-calendar"></i>
+                            </div>
+                            <div>
+                              <div class="font-weight-normal1">
+                                Event Started
+                              </div>
+                              <div class="small text-muted">45 mintues ago</div>
+                            </div>
+                          </a>
+                          <a
+                            href="login.html"
+                            class="dropdown-item border-bottom d-flex pl-4"
+                          >
+                            <div
+                              class="notifyimg bg-success-transparent text-success"
+                            >
+                              <i class="ti-desktop"></i>
+                            </div>
+                            <div>
+                              <div class="font-weight-normal1">
+                                Your Admin lanuched
+                              </div>
+                              <div class="small text-muted">1 daya ago</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="text-center p-2 border-top">
+                          <a href="login.html" class=""
+                            >View All Notifications</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dropdown profile-dropdown">
+                      <a
+                        href="login.html"
+                        class="nav-link pr-0 leading-none"
+                        data-toggle="dropdown"
+                      >
+                        <span>
+                          <img
+                            src=""
+                            alt="img"
+                            class="profile-image avatar-md brround"
+                          />
+                        </span>
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated"
+                      >
+                        <a class="dropdown-item d-flex" href="login.html">
+                          <svg
+                            class="header-icon mr-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78C15.57 19.36 13.86 20 12 20s-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
+                            />
+                          </svg>
+                          <div class="">Profile</div>
+                        </a>
+                        <a class="dropdown-item d-flex" href="login.html">
+                          <svg
+                            class="header-icon mr-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                              d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+                            />
+                          </svg>
+                          <div class="">Settings</div>
+                        </a>
+                        <a class="dropdown-item d-flex" href="login.html">
+                          <svg
+                            class="header-icon mr-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                              d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z"
+                            />
+                          </svg>
+                          <div class="">Messages</div>
+                        </a>
+                        <a
+                          class="dropdown-item d-flex"
+                          href="login.html"
+                          onclick="handleLogout(event)"
+                        >
+                          <svg
+                            class="header-icon mr-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new 0 0 24 24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <g><rect fill="none" height="24" width="24" /></g>
+                            <g>
+                              <path
+                                d="M11,7L9.6,8.4l2.6,2.6H2v2h10.2l-2.6,2.6L11,17l5-5L11,7z M20,19h-8v2h8c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-8v2h8V19z"
+                              />
+                            </g>
+                          </svg>
+                          <div class="">Sign Out</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="chat-container">
+              <!-- Sidebar -->
+              <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                  <h2 class="sidebar-title">Chat</h2>
+                  <div class="search-bar">
+                    <input
+                      type="text"
+                      class="search-input"
+                      placeholder="Search contacts..."
+                    />
+                    <span class="search-icon">🔍</span>
+                  </div>
+                </div>
+
+                <!-- Single contacts list container -->
+                <div class="contacts-list" id="contacts-list"></div>
+
+                <script>
+                  const contactsLists =
+                    document.getElementById("contacts-list");
+                  const token2 = localStorage.getItem("token");
+
+                  fetch("http://localhost:6060/chat/conversations", {
+                    headers: {
+                      Authorization: `${token2}`,
+                    },
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      contactsLists.innerHTML = ""; // clear existing content
+
+                      data.forEach((user) => {
+                        const contact = document.createElement("div");
+                        contact.className = "contact-item";
+                        contact.setAttribute("data-username", user.username); // For later access
+                        contact.dataset.userId = user.username || user.username;
+
+                        contact.innerHTML = `
+                          <div class="avatar">
+                            <img src="${user.image}" alt="${user.name}" class="avatar-img"/>
+                            <div class="status-dot"></div>
+                          </div>
+                          <div class="contact-info">
+                            <div class="contact-name">${user.name}</div>
+                            <div class="contact-message">${user.lastMessage || ""}</div>
+                          </div>
+                          
+                          
+                        `;
+
+                        contactsLists.appendChild(contact);
+                      });
+                    })
+                    .catch((err) => {
+                      console.error("Failed to load contacts", err);
+                    });
+                </script>
+              </div>
+
+              <!-- Main Chat Area -->
+              <div class="chat-main">
+                <div class="chat-header">
+                  <button class="mobile-menu-btn" onclick="toggleSidebar()">
+                    ☰
+                  </button>
+                  <div class="chat-header-info">
+                    <div class="avatar chatMainDP">JF</div>
+                    <div class="chat-header-details">
+                      <h3 class="chatMainName">Jennifer Fitz</h3>
+                      <!-- <p>Active Now</p> -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="messages-area" id="messagesArea">
+                  <div class="message received">
+                    <div class="message-content">
+                      <div>
+                        Most likely conclusion the trouble that is too much
+                        about. One could assume that the R.A.I.L.S concept would
+                        fare better like that 😊
+                      </div>
+                      <div class="message-time">10:32</div>
+                    </div>
+                  </div>
+
+                  <div class="message sent">
+                    <div class="message-content">
+                      <div>
+                        Fun talking team on the things of complete in the
+                        storage community.
+                      </div>
+                      <div class="message-time">10:33</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="input-area">
+                  <div
+                    class="file-preview-container"
+                    id="filePreviewContainer"
+                  ></div>
+                  <div class="input-container">
+                    <div class="input-wrapper">
+                      <textarea
+                        class="message-input"
+                        id="messageInput"
+                        placeholder="Type a message..."
+                        rows="1"
+                        onkeypress="handleKeyPress(event)"
+                      ></textarea>
+                      <button
+                        class="attachment-btn"
+                        onclick="document.getElementById('fileInput').click()"
+                      >
+                        📎
+                      </button>
+                      <input
+                        type="file"
+                        id="fileInput"
+                        class="file-input"
+                        multiple
+                        accept="image/*,.pdf,.doc,.docx,.txt,.zip,.rar"
+                        onchange="handleFileSelect(event)"
+                      />
+                    </div>
+                    <button class="send-btn" onclick="sendMessage()">
+                      <span>➤</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              // Search functionality
+              const searchInput = document.querySelector(".search-input");
+              const contactsList = document.getElementById("contacts-list");
+              const token = localStorage.getItem("token");
+              let debounceTimer;
+
+              // Store the default contacts HTML for restoration
+              const defaultContactsHTML = contactsList.innerHTML;
+
+              searchInput.addEventListener("input", function () {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                  const query = searchInput.value.trim();
+
+                  // Reset to default contacts if search input is cleared
+                  if (query.length === 0) {
+                    contactsList.innerHTML = defaultContactsHTML;
+                    // Re-attach click listeners to restored contacts
+                    attachContactClickListeners();
+                    return;
+                  }
+
+                  fetch(
+                    `http://localhost:6060/chat/search?name=${encodeURIComponent(
+                      query
+                    )}`,
+                    {
+                      method: "GET",
+                      headers: {
+                        Authorization: `${token}`,
+                        "Content-Type": "application/json",
+                      },
+                    }
+                  )
+                    .then((response) => {
+                      // Check if response is ok and has content
+                      if (!response.ok) {
+                        throw new Error(
+                          `HTTP error! status: ${response.status}`
+                        );
+                      }
+
+                      // Check if response has content
+                      const contentLength =
+                        response.headers.get("content-length");
+                      if (contentLength === "0") {
+                        throw new Error("Empty response from server");
+                      }
+
+                      // Clone response to check if it's empty
+                      return response
+                        .clone()
+                        .text()
+                        .then((text) => {
+                          if (!text.trim()) {
+                            throw new Error("Empty response body");
+                          }
+
+                          // Try to parse as JSON
+                          try {
+                            return JSON.parse(text);
+                          } catch (e) {
+                            console.error("Invalid JSON response:", text);
+                            throw new Error(
+                              "Invalid JSON response from server"
+                            );
+                          }
+                        });
+                    })
+                    .then((data) => {
+                      // Clear current contact list
+                      contactsList.innerHTML = "";
+
+                      if (Array.isArray(data) && data.length > 0) {
+                        data.forEach((user) => {
+                          const contact = document.createElement("div");
+                          contact.className = "contact-item";
+                          contact.dataset.userId =
+                            user.username || user.username;
+
+                          contact.innerHTML = `
+                                  <div class="avatar">
+                                      ${
+                                        user.image
+                                          ? `<img src="${user.image}" alt="${user.name}" />`
+                                          : user.name
+                                              ?.charAt(0)
+                                              ?.toUpperCase() || "?"
+                                      }
+                                      <div class="status-dot"></div>
+                                  </div>
+                                  <div class="contact-info">
+                                      <div class="contact-name">${
+                                        user.name || "Unknown User"
+                                      }</div>
+                                      <div class="contact-message">${
+                                        user.lastMessage || "No recent messages"
+                                      }</div>
+                                  </div>
+                                  <div class="contact-meta">
+                                      <div class="contact-time">${
+                                        user.lastSeen || ""
+                                      }</div>
+                                      ${
+                                        user.unreadCount
+                                          ? `<div class="unread-badge">${user.unreadCount}</div>`
+                                          : ""
+                                      }
+                                  </div>
+                              `;
+
+                          contactsList.appendChild(contact);
+                        });
+
+                        // Attach click listeners to new search results
+                        attachContactClickListeners();
+                      } else {
+                        contactsList.innerHTML = `
+                              <div class="contact-item">
+                                  <div class="contact-info">
+                                      <div class="contact-name">No results found</div>
+                                  </div>
+                              </div>
+                          `;
+                      }
+                    })
+                    .catch((error) => {
+                      console.error("Search failed:", error);
+
+                      // Show user-friendly error message
+                      contactsList.innerHTML = `
+                          <div class="contact-item">
+                              <div class="contact-info">
+                                  <div class="contact-name">Search temporarily unavailable</div>
+                              </div>
+                          </div>
+                      `;
+                    });
+                }, 300);
+              });
+
+              // File handling
+              let selectedFiles = [];
+
+              function toggleSidebar() {
+                const sidebar = document.getElementById("sidebar");
+                sidebar.classList.toggle("mobile-open");
+              }
+
+              function handleKeyPress(event) {
+                if (event.key === "Enter" && !event.shiftKey) {
+                  event.preventDefault();
+                  sendMessage();
+                }
+              }
+
+
+              let stompClient = null;
+              const loggedUserId = localStorage.getItem("username");
+
+                // ✅ WebSocket Connection
+                function connectWebSocket() {
+                  const socket = new SockJS("http://localhost:6060/ws-chat"); // Your Spring Boot endpoint
+                  stompClient = Stomp.over(socket);
+
+                  stompClient.connect({}, function (frame) {
+                    console.log("Connected: " + frame);
+
+                    // 🔔 Subscribe to the topic for the logged-in user
+                    stompClient.subscribe("/topic/messages/" + loggedUserId, function (message) {
+                      const msg = JSON.parse(message.body);
+                      console.log("🔔 New message received:", msg);
+                    
+                        const isSentByMe = msg.senderId === loggedUserId;
+
+                        addMessageToUI(msg, isSentByMe);
+
+                      // 👉 Update UI (append to chat, show notification, etc.)
+                      // e.g., displayMessage(msg)
+                    });
+                  });
+                }
+
+
+              function handleFileSelect(event) {
+                const files = Array.from(event.target.files);
+                selectedFiles = [...selectedFiles, ...files];
+                displayFilePreview();
+              }
+
+              function displayFilePreview() {
+                const container = document.getElementById(
+                  "filePreviewContainer"
+                );
+                container.innerHTML = "";
+
+                if (selectedFiles.length === 0) {
+                  container.classList.remove("show");
+                  return;
+                }
+
+                container.classList.add("show");
+
+                selectedFiles.forEach((file, index) => {
+                  const preview = document.createElement("div");
+                  preview.className = "file-preview";
+                  preview.innerHTML = createFilePreviewHTML(file, index);
+                  container.appendChild(preview);
+                });
+              }
+
+              function createFilePreviewHTML(file, index) {
+                const fileSize = formatFileSize(file.size);
+                const isImage = file.type.startsWith("image/");
+
+                if (isImage) {
+                  const imageUrl = URL.createObjectURL(file);
+                  return `
+                      <img src="${imageUrl}" alt="${file.name}" />
+                      <div class="file-info">
+                          <div class="file-name">${file.name}</div>
+                          <div class="file-size">${fileSize}</div>
+                      </div>
+                      <button class="remove-file" onclick="removeFile(${index})">×</button>
+                  `;
+                } else {
+                  const fileIcon = getFileIcon(file.type);
+                  return `
+                      <div class="file-icon">${fileIcon}</div>
+                      <div class="file-info">
+                          <div class="file-name">${file.name}</div>
+                          <div class="file-size">${fileSize}</div>
+                      </div>
+                      <button class="remove-file" onclick="removeFile(${index})">×</button>
+                  `;
+                }
+              }
+
+              function getFileIcon(fileType) {
+                if (fileType.includes("pdf")) return "📄";
+                if (fileType.includes("word") || fileType.includes("document"))
+                  return "📝";
+                if (fileType.includes("text")) return "📃";
+                if (fileType.includes("zip") || fileType.includes("rar"))
+                  return "📦";
+                if (
+                  fileType.includes("excel") ||
+                  fileType.includes("spreadsheet")
+                )
+                  return "📊";
+                if (
+                  fileType.includes("powerpoint") ||
+                  fileType.includes("presentation")
+                )
+                  return "📽️";
+                return "📁";
+              }
+
+              function formatFileSize(bytes) {
+                if (bytes === 0) return "0 Bytes";
+                const k = 1024;
+                const sizes = ["Bytes", "KB", "MB", "GB"];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return (
+                  parseFloat((bytes / Math.pow(k, i)).toFixed(2)) +
+                  " " +
+                  sizes[i]
+                );
+              }
+
+              function removeFile(index) {
+                selectedFiles.splice(index, 1);
+                displayFilePreview();
+              }
+
+              // function sendMessage() {
+              //   const input = document.getElementById("messageInput");
+              //   const message = input.value.trim();
+              //   if (!currentSelectedUserId) {
+              //     alert("Please select a contact first");
+              //     return;
+              //   }
+
+              //   if (message || selectedFiles.length > 0) {
+              //     const messagesArea = document.getElementById("messagesArea");
+              //     const messageDiv = document.createElement("div");
+              //     messageDiv.className = "message sent";
+
+              //     let messageContent = "";
+              //     if (message) {
+              //       messageContent += `<div>${message}</div>`;
+              //     }
+
+              //     // Add attachments
+              //     if (selectedFiles.length > 0) {
+              //       selectedFiles.forEach((file) => {
+              //         if (file.type.startsWith("image/")) {
+              //           const imageUrl = URL.createObjectURL(file);
+              //           messageContent += `
+              //                     <div class="message-attachment">
+              //                         <img src="${imageUrl}" alt="${file.name}" />
+              //                     </div>
+              //                 `;
+              //         } else {
+              //           const fileIcon = getFileIcon(file.type);
+              //           const fileSize = formatFileSize(file.size);
+              //           messageContent += `
+              //                     <div class="document-attachment">
+              //                         <div class="document-icon">${fileIcon}</div>
+              //                         <div class="document-info">
+              //                             <div class="document-name">${file.name}</div>
+              //                             <div class="document-size">${fileSize}</div>
+              //                         </div>
+              //                     </div>
+              //                 `;
+              //         }
+              //       });
+              //     }f
+
+              //     messageDiv.innerHTML = `
+              //         <div class="message-content">
+              //             ${messageContent}
+              //             <div class="message-time">Just now</div>
+              //         </div>
+              //     `;
+
+              //     messagesArea.appendChild(messageDiv);
+              //     messagesArea.scrollTop = messagesArea.scrollHeight;
+
+              //     // Clear input and files
+              //     input.value = "";
+              //     selectedFiles = [];
+              //     displayFilePreview();
+
+              //     // Auto-resize textarea
+              //     input.style.height = "auto";
+
+              //     // Reset file input
+              //     document.getElementById("fileInput").value = "";
+              //   }
+              // }
+
+              async function sendMessage() {
+                const input = document.getElementById("messageInput");
+                const message = input.value.trim();
+
+                if (!currentSelectedUserId) {
+                  alert("Please select a contact first");
+                  return;
+                }
+
+                if (message || selectedFiles.length > 0) {
+                  // Display message locally immediately (UI update)
+                  const messagesArea = document.getElementById("messagesArea");
+                  const messageDiv = document.createElement("div");
+                  messageDiv.className = "message sent";
+
+                  let messageContent = "";
+                  if (message) {
+                    messageContent += `<div>${message}</div>`;
+                  }
+
+                  // Add attachments preview
+                  if (selectedFiles.length > 0) {
+                    selectedFiles.forEach((file) => {
+                      if (file.type.startsWith("image/")) {
+                        const imageUrl = URL.createObjectURL(file);
+                        messageContent += `
+            <div class="message-attachment">
+              <img src="${imageUrl}" alt="${file.name}" />
+            </div>`;
+                      } else {
+                        const fileIcon = getFileIcon(file.type);
+                        const fileSize = formatFileSize(file.size);
+                        messageContent += `
+            <div class="document-attachment">
+              <div class="document-icon">${fileIcon}</div>
+              <div class="document-info">
+                <div class="document-name">${file.name}</div>
+                <div class="document-size">${fileSize}</div>
+              </div>
+            </div>`;
+                      }
+                    });
+                  }
+
+                  messageDiv.innerHTML = `
+      <div class="message-content">
+        ${messageContent}
+        <div class="message-time">Just now</div>
+      </div>`;
+                  messagesArea.appendChild(messageDiv);
+                  messagesArea.scrollTop = messagesArea.scrollHeight;
+
+                  // 🔗 Backend API logic (send message) - **Do this BEFORE clearing input**
+                  try {
+                    const token = localStorage.getItem("token");
+                    const loggedUserId = localStorage.getItem("username");
+                    const formData = new FormData();
+                    formData.append("senderId", loggedUserId);
+                    formData.append("receiverId", currentSelectedUserId);
+                    formData.append(
+                      "messageType",
+                      selectedFiles.length > 0 ? "file" : "text"
+                    );
+                    formData.append(
+                      "content",
+                      message || (selectedFiles[0]?.name ?? "")
+                    );
+
+                    if (selectedFiles.length > 0) {
+                      formData.append("file", selectedFiles[0]); // Currently supporting one file
+                    }
+
+                    const response = await fetch(
+                      "http://localhost:6060/chat/send",
+                      {
+                        method: "POST",
+                        headers: {
+                          Authorization: `${token}`,
+                        },
+                        body: formData,
+                      }
+                    );
+
+                    if (response.ok) {
+                      const text = await response.text();
+                      if (text) {
+                        const result = JSON.parse(text);
+                        if (result.statusCode !== 200) {
+                          alert(result.message || "Failed to send message");
+                        }
+                      } else {
+                        console.log(
+                          "Message sent successfully. No response body."
+                        );
+                      }
+                    } else {
+                      alert("Failed to send message: " + response.status);
+                    }
+                  } catch (error) {
+                    console.error("Error sending message:", error);
+                    alert("Send error occurred");
+                  }
+
+                  // Clear inputs AFTER sending
+                  input.value = "";
+                  selectedFiles = [];
+                  displayFilePreview();
+                  input.style.height = "auto";
+                  document.getElementById("fileInput").value = "";
+                }
+              }
+
+              // Contact selection functionality
+              function attachContactClickListeners() {
+                document.querySelectorAll(".contact-item").forEach((item) => {
+                  // Remove existing listeners to prevent duplicates
+                  item.replaceWith(item.cloneNode(true));
+                });
+
+                
+
+
+                // Add new listeners
+                document.querySelectorAll(".contact-item").forEach((item) => {
+                  item.addEventListener("click", function () {
+                    const userId = this.dataset.userId;
+                    console.log("RecieverUserId", userId);
+                    document
+                      .querySelectorAll(".contact-item")
+                      .forEach((contact) => {
+                        contact.classList.remove("active");
+                      });
+                    this.classList.add("active");
+
+                    // Update current selected user
+                    currentSelectedUserId = userId;
+                    const loggedUserId = localStorage.getItem("username");
+
+                    // Update chat header with selected contact
+                    const name =
+                      this.querySelector(".contact-name").textContent;
+                    const avatarElement = this.querySelector(".avatar");
+                    const avatarImg = avatarElement.querySelector("img");
+                    const avatar = avatarImg
+                      ? avatarImg.src
+                      : avatarElement.textContent.trim();
+
+                    document.querySelector(
+                      ".chat-header-details h3"
+                    ).textContent = name;
+
+                    const headerAvatar = document.querySelector(".chatMainDP");
+                    if (avatarImg) {
+                      headerAvatar.innerHTML = `<img src="${avatar}" alt="${name}" />`;
+                    } else {
+                      headerAvatar.textContent = avatar;
+                    }
+                    loadMessages(userId, loggedUserId);
+
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth <= 768) {
+                      document
+                        .getElementById("sidebar")
+                        .classList.remove("mobile-open");
+                    }
+                  });
+                });
+              }
+
+              function addMessageToUI(messageDTO, isSentByCurrentUser) {
+                  const messagesArea = document.getElementById("messagesArea");
+                  console.log("asdgfayaudygasdfasuydfasudyigasdiyfusaduigasfdiysa")
+
+                  // Create outer div
+                  const messageDiv = document.createElement("div");
+                  messageDiv.classList.add("message", isSentByCurrentUser ? "sent" : "received");
+
+                  // Create message content container
+                  const contentDiv = document.createElement("div");
+                  contentDiv.classList.add("message-content");
+
+                  // Add message body
+                  const messageBody = document.createElement("div");
+                  if (messageDTO.messageType === "file" && messageDTO.media?.url) {
+                    const link = document.createElement("a");
+                    link.href = "/" + messageDTO.media.url;
+                    link.target = "_blank";
+                    link.textContent = messageDTO.media.filename;
+                    messageBody.appendChild(link);
+                  } else {
+                    messageBody.textContent = messageDTO.content;
+                  }
+
+                  // Add timestamp
+                  const timeDiv = document.createElement("div");
+                  timeDiv.classList.add("message-time");
+
+                  const time = new Date(messageDTO.createdAt || Date.now());
+                  timeDiv.textContent = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                  // Append elements
+                  contentDiv.appendChild(messageBody);
+                  contentDiv.appendChild(timeDiv);
+                  messageDiv.appendChild(contentDiv);
+                  messagesArea.appendChild(messageDiv);
+
+                  // Auto-scroll to latest message
+                  messagesArea.scrollTop = messagesArea.scrollHeight;
+                }
+
+              async function loadMessages(selectedUserId, loggedUserId) {
+                const messagesArea = document.getElementById("messagesArea");
+                messagesArea.innerHTML = ""; // Clear previous messages
+
+                const token = localStorage.getItem("token");
+                const url = `http://localhost:6060/chat/messages?loggedUserId=${loggedUserId}&selectedUserId=${selectedUserId}`;
+
+                try {
+                  const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                      Authorization: `${token}`,
+                    },
+                  });
+
+                  if (!response.ok) {
+                    throw new Error("Failed to load messages");
+                  }
+
+                  const data = await response.json();
+
+                  if (data.statusCode === 200 && Array.isArray(data.data)) {
+                    data.data.forEach((msg) => {
+                      const isSender = msg.senderId === loggedUserId; // Correct check
+                      const messageDiv = document.createElement("div");
+                      messageDiv.classList.add(
+                        "message",
+                        isSender ? "sent" : "received"
+                      );
+
+                      const contentDiv = document.createElement("div");
+                      contentDiv.classList.add("message-content");
+
+                      if (msg.messageType === "file" && msg.media) {
+                        const fileExt = msg.media.filename
+                          .split(".")
+                          .pop()
+                          .toLowerCase();
+
+                        if (
+                          fileExt === "jpg" ||
+                          fileExt === "jpeg" ||
+                          fileExt === "png" ||
+                          fileExt === "gif"
+                        ) {
+                          const img = document.createElement("img");
+                          img.src = msg.media.url;
+                          img.alt = msg.media.filename;
+                          img.style.maxWidth = "200px";
+                          img.style.borderRadius = "8px";
+                          contentDiv.appendChild(img);
+                          const caption = document.createElement("div");
+                          caption.textContent = msg.content;
+                          contentDiv.appendChild(caption);
+                        } else {
+                          const link = document.createElement("a");
+                          link.href = msg.media.url;
+                          link.textContent = `${msg.content} (${msg.media.filename})`;
+                          link.target = "_blank";
+                          contentDiv.appendChild(link);
+                        }
+                      } else {
+                        const text = document.createElement("div");
+                        text.textContent = msg.content;
+                        contentDiv.appendChild(text);
+                      }
+
+                      const timeDiv = document.createElement("div");
+                      timeDiv.classList.add("message-time");
+                      timeDiv.textContent = msg.formattedTime;
+                      contentDiv.appendChild(timeDiv);
+
+                      messageDiv.appendChild(contentDiv);
+                      messagesArea.appendChild(messageDiv);
+                    });
+
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                  } else {
+                    console.warn("No messages found");
+                  }
+                } catch (error) {
+                  console.error("Error loading messages:", error);
+                }
+              }
+
+              // Auto-resize textarea
+              document
+                .getElementById("messageInput")
+                .addEventListener("input", function () {
+                  this.style.height = "auto";
+                  this.style.height = Math.min(this.scrollHeight, 120) + "px";
+                });
+
+              // Drag and drop functionality
+              const inputArea = document.querySelector(".input-area");
+              const messagesArea = document.getElementById("messagesArea");
+
+              ["dragenter", "dragover", "dragleave", "drop"].forEach(
+                (eventName) => {
+                  inputArea.addEventListener(eventName, preventDefaults, false);
+                  messagesArea.addEventListener(
+                    eventName,
+                    preventDefaults,
+                    false
+                  );
+                }
+              );
+
+              function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+
+              ["dragenter", "dragover"].forEach((eventName) => {
+                inputArea.addEventListener(eventName, highlight, false);
+              });
+
+              ["dragleave", "drop"].forEach((eventName) => {
+                inputArea.addEventListener(eventName, unhighlight, false);
+              });
+
+              function highlight(e) {
+                inputArea.style.background = "rgba(102, 126, 234, 0.1)";
+              }
+
+              function unhighlight(e) {
+                inputArea.style.background = "";
+              }
+
+              inputArea.addEventListener("drop", handleDrop, false);
+
+              function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = Array.from(dt.files);
+                selectedFiles = [...selectedFiles, ...files];
+                displayFilePreview();
+              }
+
+              // Close sidebar when clicking outside on mobile
+              document.addEventListener("click", function (event) {
+                const sidebar = document.getElementById("sidebar");
+                const menuBtn = document.querySelector(".mobile-menu-btn");
+
+                if (
+                  window.innerWidth <= 768 &&
+                  !sidebar.contains(event.target) &&
+                  !menuBtn.contains(event.target)
+                ) {
+                  sidebar.classList.remove("mobile-open");
+                }
+              });
+
+              // Initialize contact click listeners
+              document.addEventListener("DOMContentLoaded", function () {
+                attachContactClickListeners();
+                connectWebSocket();
+              });
+
+                // // ✅ Initialize WebSocket on page load
+                // window.onload = function () {
+                //   connectWebSocket();
+                // };
+            </script>
+          </div>
+        </div>
+        <!-- End app-content-->
+      </div>
+      <!--Footer-->
+      <footer class="footer">
+        <div class="container">
+          <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-12 col-sm-12 text-center">
+              Copyright ©   <a href="login.html">EduCare</a>. Designed by
+              <a href="login.html"> JMHM Jayakodi</a> All rights
+              reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- End Footer-->
+    </div>
+    <!-- End Page -->
+    <!-- Back to top -->
+    <a href="#top" id="back-to-top"><i class="fe fe-chevrons-up"></i></a>
+
+    <!-- Jquery js-->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap4 js-->
+    <script src="assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--Othercharts js-->
+    <script src="assets/plugins/othercharts/jquery.sparkline.min.js"></script>
+
+    <!-- Circle-progress js-->
+    <script src="assets/js/circle-progress.min.js"></script>
+
+    <!-- Jquery-rating js-->
+    <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
+
+    <!--Sidemenu js-->
+    <script src="assets/plugins/sidemenu/sidemenu.js"></script>
+
+    <!-- P-scroll js-->
+    <script src="assets/plugins/p-scrollbar/p-scrollbar.js"></script>
+    <script src="assets/plugins/p-scrollbar/p-scroll1.js"></script>
+    <script src="assets/plugins/p-scrollbar/p-scroll.js"></script>
+
+    <!--INTERNAL Peitychart js-->
+    <script src="assets/plugins/peitychart/jquery.peity.min.js"></script>
+    <script src="assets/plugins/peitychart/peitychart.init.js"></script>
+
+    <!--INTERNAL Apexchart js-->
+    <script src="assets/js/apexcharts.js"></script>
+
+    <!--INTERNAL ECharts js-->
+    <script src="assets/plugins/echarts/echarts.js"></script>
+
+    <!--INTERNAL Chart js -->
+    <script src="assets/plugins/chart/chart.bundle.js"></script>
+    <script src="assets/plugins/chart/utils.js"></script>
+
+    <!-- INTERNAL Select2 js -->
+    <script src="assets/plugins/select2/select2.full.min.js"></script>
+    <script src="assets/js/select2.js"></script>
+
+    <!--INTERNAL Moment js-->
+    <script src="assets/plugins/moment/moment.js"></script>
+
+    <!--INTERNAL Index js-->
+    <script src="assets/js/index1.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <!-- Custom js-->
+    <script src="assets/js/custom.js"></script>
+
+    <!-- Switcher js-->
+    <script src="assets/switcher/js/switcher.js"></script>
+  </body>
+
+  <!-- Mirrored from laravel.spruko.com/admitro/Vertical-IconSidedar-Light/index by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Apr 2025 05:54:22 GMT -->
+</html>

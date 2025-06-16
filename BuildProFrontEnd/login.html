@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <!-- Mirrored from laravel.spruko.com/BuildPro/Vertical-IconSidedar-Light/login-3 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Apr 2025 05:58:47 GMT -->
+  <!-- Added by HTTrack --><meta
+    http-equiv="content-type"
+    content="text/html;charset=UTF-8"
+  /><!-- /Added by HTTrack -->
+  <head>
+    <!-- Meta data -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta
+      content="BuildPro - Laravel Bootstrap Admin Template"
+      name="description"
+    />
+    <meta content="Spruko Technologies Private Limited" name="author" />
+    <meta
+      name="keywords"
+      content="laravel admin dashboard, best laravel admin panel, laravel admin dashboard, php admin panel template, blade template in laravel, laravel dashboard template, laravel template bootstrap, laravel simple admin panel,laravel dashboard template,laravel bootstrap 4 template, best admin panel for laravel,laravel admin panel template, laravel admin dashboard template, laravel bootstrap admin template, laravel admin template bootstrap 4"
+    />
+
+    <!-- Title -->
+    <title>BuildPro - Login</title>
+
+    <!--Favicon -->
+    <link
+      rel="icon"
+      href="assets/images/brand/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!--Bootstrap css -->
+    <link
+      href="assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Style css -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/dark.css" rel="stylesheet" />
+    <link href="assets/css/skin-modes.css" rel="stylesheet" />
+
+    <!-- Animate css -->
+    <link href="assets/css/animated.css" rel="stylesheet" />
+
+    <!---Icons css-->
+    <link href="assets/css/icons.css" rel="stylesheet" />
+
+    <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- Color Skin css -->
+    <link
+      id="theme"
+      href="assets/colors/color1.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="h-100vh page-style1">
+    <div class="page">
+      <div class="page-single">
+        <div class="p-5">
+          <div class="row">
+            <div class="col mx-auto">
+              <div class="row justify-content-center">
+                <div class="col-lg-9 col-xl-8">
+                  <div class="card-group mb-0">
+                    <div class="card p-4">
+                      <div class="card-body">
+                        <div class="text-center title-style mb-6">
+                          <h1 class="mb-2">Login</h1>
+                          <hr />
+                          <p class="text-muted">Sign In to your account</p>
+                        </div>
+
+                        <!-- Login Form -->
+                        <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="fe fe-user"></i>
+                            </div>
+                          </div>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            placeholder="Username"
+                          />
+                        </div>
+                        <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="fe fe-lock"></i>
+                            </div>
+                          </div>
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="Password"
+                          />
+                        </div>
+                        <div class="row">
+                          <div class="col-12">
+                            <button
+                              type="button"
+                              class="btn btn-primary btn-block px-4"
+                              onclick="loginUser()"
+                            >
+                              Login
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="text-center pt-4">
+                          <div class="font-weight-normal fs-16">
+                            You Don't have an account
+                            <a
+                              class="btn-link font-weight-normal"
+                              href="register.html"
+                              >Register Here</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="card text-white bg-primary py-5 d-md-down-none page-content mt-0"
+                    >
+                      <div
+                        class="text-center justify-content-center page-single-content"
+                      >
+                        <div class="box">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                        <img src="assets/images/png/login.png" alt="img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jquery js-->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap4 js-->
+    <script src="assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--Othercharts js-->
+    <script src="assets/plugins/othercharts/jquery.sparkline.min.js"></script>
+
+    <!-- Circle-progress js-->
+    <script src="assets/js/circle-progress.min.js"></script>
+
+    <!-- Jquery-rating js-->
+    <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
+    <!-- Custom js-->
+    <script src="assets/js/custom.js"></script>
+	<script>
+		// Function to handle login
+		async function loginUser() {
+		  // Get values from the form
+		  const username = document.getElementById("username").value;
+		  const password = document.getElementById("password").value;
+	  
+		  // Create the loginDTO object
+		  const loginDTO = {
+			username: username,
+			password: password
+		  };
+	  
+		  try {
+			// Send POST request to the backend
+			const response = await fetch('http://localhost:6060/users/login', {
+			  method: 'POST',
+			  headers: {
+				'Content-Type': 'application/json'
+			  },
+			  body: JSON.stringify(loginDTO)
+			});
+	  
+			// Parse response from the backend
+			const data = await response.json();
+	  
+			// Check if login was successful
+			if (response.status === 200) {
+  console.log("About is:", data.data.user.about);
+
+  // Store user details in localStorage
+  localStorage.setItem('token', data.data.token);
+  localStorage.setItem('username', data.data.user.username);
+  localStorage.setItem('name', data.data.user.name);
+  localStorage.setItem('email', data.data.user.email);
+  localStorage.setItem('birthday', data.data.user.birthday);
+  localStorage.setItem('contactNo', data.data.user.contactNo);
+  localStorage.setItem('location', data.data.user.location);
+  localStorage.setItem('about', data.data.user.about);
+  localStorage.setItem('experience', data.data.user.experience);
+  localStorage.setItem('imageUrl', data.data.imageUrl);
+  localStorage.setItem('subject', JSON.stringify(data.data.user.subject));
+
+  const storedSubjects = JSON.parse(localStorage.getItem("subject"));
+  
+
+
+  // Wait for user to click OK before redirecting
+  Swal.fire({
+    icon: 'success',
+    title: 'Login successful!',
+    showConfirmButton: false, 
+    timer: 2000, 
+    text: data.message,
+    confirmButtonColor: '#4CAF50'
+  }).then(() => {
+    window.location.href = 'http://localhost:8012/myPro/BuildPro/BuildProFrontEnd/dashboard.html';
+  });
+
+} else {
+  Swal.fire({
+    icon: 'error',
+    title: 'Login Failed',
+    showConfirmButton: false, 
+    timer: 2000, 
+    text: data.message,
+    confirmButtonColor: '#d33'
+  });
+}
+
+		  } catch (error) {
+			console.error('Error during login:', error);
+			alert('An error occurred, please try again later.');
+		  }
+		}
+	  </script>
+	  
+  </body>
+
+  <!-- Mirrored from laravel.spruko.com/BuildPro/Vertical-IconSidedar-Light/login-3 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Apr 2025 05:58:47 GMT -->
+</html>

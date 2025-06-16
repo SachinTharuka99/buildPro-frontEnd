@@ -1,0 +1,45 @@
+<script>
+								const baseURL = 'http://localhost:6060';
+								
+								fetch(`${baseURL}/tutorPost/allPosts`)
+								  .then(response => response.json())
+								  .then(posts => {
+									const container = document.getElementById('postsContainer');
+									container.innerHTML = ''; // clear old content
+								
+									posts.forEach(post => {
+									  const html = `
+										<div class="col-xl-4 col-lg-6 col-md-12">
+										  <div class="card overflow-hidden">
+											<div class="card-body pr-2">
+											  <div class="d-flex align-items-center mt-auto">
+												<div class="avatar brround avatar-md mr-3" style="background-image: url('assets/images/users/16.jpg')"></div>
+												<div>
+												  <a href="profile.html" class="font-weight-semibold">${post.tutorUserName}</a>
+												  <small class="d-block text-muted">${post.createdDate}</small>
+												</div>
+											  </div>
+											</div>
+											<div class="item7-card-img px-4">
+											  <a href="tutorPostView.html">
+												<img src="${post.image[0]}" alt="img" class="cover-image br-7">
+											  </a>
+											</div>
+											<div class="card-body">
+											  <div class="item7-card-desc d-flex mb-5">
+												<div class="d-flex"><i class="fe fe-calendar fs-16 mr-1"></i><div class="mt-0">${post.createdDate}</div></div>
+												<div class="ml-auto">
+												  <div class="mr-0 d-flex"><i class="fe fe-message-square fs-16 mr-1"></i><div class="mt-0">${post.comment.length} Comments</div></div>
+												</div>
+											  </div>
+											  <h5 class="font-weight-semibold">${post.title}</h5>
+											  <p>${post.description}</p>
+											</div>
+										  </div>
+										</div>
+									  `;
+									  container.innerHTML += html;
+									});
+								  })
+								  .catch(error => console.error('Error fetching posts:', error));
+								</script>
