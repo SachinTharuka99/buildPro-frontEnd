@@ -1445,7 +1445,7 @@
         });
     
         try {
-          const response = await fetch("http://10.53.228.54:6060/tutorPost/createPost", {
+          const response = await fetch("http://localhost:6060/tutorPost/createPost", {
             method: "POST",
             headers: {
               Authorization: token,
@@ -1549,7 +1549,7 @@
           }
 
           try {
-            const response = await fetch("http://10.53.228.54:6060/users/update", {
+            const response = await fetch("http://localhost:6060/users/update", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

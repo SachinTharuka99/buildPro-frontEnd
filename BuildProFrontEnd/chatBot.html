@@ -1238,7 +1238,7 @@
       
               window.onload = function() {
                   var form = document.getElementById('uploadForm');
-                  form.action = 'http://10.53.228.54:5002/upload/' + userId; // Dynamically set the action URL
+                  form.action = 'http://localhost:5002/upload/' + userId; // Dynamically set the action URL
               };
           </script> -->
 
@@ -1250,7 +1250,7 @@
 
               window.onload = function () {
                 var form = document.getElementById("uploadForm");
-                form.action = "http://10.53.228.54:5002/upload/" + userId; // Set dynamic action URL
+                form.action = "http://localhost:5002/upload/" + userId; // Set dynamic action URL
 
                 form.addEventListener("submit", function (e) {
                   e.preventDefault(); // Prevent normal form submit
@@ -1393,7 +1393,7 @@
       });
       
       function connectToWebSocket() {
-        const socket = new SockJS('http://10.53.228.54:6060/ws-chat');
+        const socket = new SockJS('http://localhost:6060/ws-chat');
         stompClient = Stomp.over(socket);
         
         stompClient.connect({}, function(frame) {
@@ -1525,7 +1525,7 @@
       });
 
       function connectToWebSocket() {
-        const socket = new SockJS("http://10.53.228.54:6060/ws-chat");
+        const socket = new SockJS("http://localhost:6060/ws-chat");
         stompClient = Stomp.over(socket);
 
         stompClient.connect(
@@ -1560,7 +1560,7 @@
 
       function loadChatHistory() {
         // Updated to call the correct endpoint from the Spring controller
-        fetch(`http://10.53.228.54:6060/chatBot/${currentUserId}`)
+        fetch(`http://localhost:6060/chatBot/${currentUserId}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok");

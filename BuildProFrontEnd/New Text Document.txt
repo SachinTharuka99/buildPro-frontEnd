@@ -1,5 +1,5 @@
 <script>
-								const baseURL = 'http://10.53.228.54:6060';
+								const baseURL = 'http://localhost:6060';
 								
 								fetch(`${baseURL}/tutorPost/allPosts`)
 								  .then(response => response.json())

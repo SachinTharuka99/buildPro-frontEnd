@@ -137,7 +137,7 @@
 
         try {
           const response = await fetch(
-            `http://10.53.228.54:6060/tutorPost/post/${postId}`,
+            `http://localhost:6060/tutorPost/post/${postId}`,
             {
               method: "GET",
               headers: {
@@ -1241,7 +1241,7 @@
                         async function fetchLikeCount() {
                           try {
                             const response = await fetch(
-                              `http://10.53.228.54:6060/tutorPost/post/${postId}`,
+                              `http://localhost:6060/tutorPost/post/${postId}`,
                               {
                                 method: "GET",
                                 headers: {
@@ -1286,7 +1286,7 @@
 
                             try {
                               const response = await fetch(
-                                `http://10.53.228.54:6060/tutorPost/post/${postId}/like`,
+                                `http://localhost:6060/tutorPost/post/${postId}/like`,
                                 {
                                   method: "POST",
                                   headers: {
@@ -1540,7 +1540,7 @@
 
                       try {
                         const response = await fetch(
-                          `http://10.53.228.54:6060/tutorPost/post/${postId}/comment`,
+                          `http://localhost:6060/tutorPost/post/${postId}/comment`,
                           {
                             method: "POST",
                             headers: {
