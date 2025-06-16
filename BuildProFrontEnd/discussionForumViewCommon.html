@@ -157,7 +157,7 @@
 
         try {
           const response = await fetch(
-            `http://localhost:6060/discussion/by-user/${discussionId}`,
+            `http://build-pro-backend.vercel.app:6060/discussion/by-user/${discussionId}`,
             {
               method: "GET",
               headers: {
@@ -338,7 +338,7 @@
               if (!replyText) return;
 
               fetch(
-                `http://localhost:6060/discussion/${discussionId}/comment/${comment.id}/reply`,
+                `http://build-pro-backend.vercel.app:6060/discussion/${discussionId}/comment/${comment.id}/reply`,
                 {
                   method: "POST",
                   headers: {
@@ -1394,7 +1394,7 @@
                         async function fetchLikeCount() {
                           try {
                             const response = await fetch(
-                              `http://localhost:6060/discussion/by-user/${discussionId}`,
+                              `http://build-pro-backend.vercel.app:6060/discussion/by-user/${discussionId}`,
                               {
                                 method: "GET",
                                 headers: {
@@ -1466,7 +1466,7 @@
 
                             try {
                               const response = await fetch(
-                                `http://localhost:6060/discussion/${discussionId}/like`,
+                                `http://build-pro-backend.vercel.app:6060/discussion/${discussionId}/like`,
                                 {
                                   method: "POST",
                                   headers: {
@@ -1722,7 +1722,7 @@
 
                       try {
                         const response = await fetch(
-                          `http://localhost:6060/discussion/${discussionId}/comment`,
+                          `http://build-pro-backend.vercel.app:6060/discussion/${discussionId}/comment`,
                           {
                             method: "POST",
                             headers: {

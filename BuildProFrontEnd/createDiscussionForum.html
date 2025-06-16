@@ -1465,7 +1465,7 @@
         }
     
         try {
-          const response = await fetch("http://localhost:6060/discussion/create", {
+          const response = await fetch("http://build-pro-backend.vercel.app:6060/discussion/create", {
             method: "POST",
             headers: {
               Authorization: token,
@@ -1562,7 +1562,7 @@
           }
 
           try {
-            const response = await fetch("http://localhost:6060/users/update", {
+            const response = await fetch("http://build-pro-backend.vercel.app:6060/users/update", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

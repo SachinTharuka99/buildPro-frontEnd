@@ -1393,7 +1393,7 @@
       });
       
       function connectToWebSocket() {
-        const socket = new SockJS('http://localhost:6060/ws-chat');
+        const socket = new SockJS('http://build-pro-backend.vercel.app:6060/ws-chat');
         stompClient = Stomp.over(socket);
         
         stompClient.connect({}, function(frame) {
@@ -1525,7 +1525,7 @@
       });
 
       function connectToWebSocket() {
-        const socket = new SockJS("http://localhost:6060/ws-chat");
+        const socket = new SockJS("http://build-pro-backend.vercel.app:6060/ws-chat");
         stompClient = Stomp.over(socket);
 
         stompClient.connect(
@@ -1560,7 +1560,7 @@
 
       function loadChatHistory() {
         // Updated to call the correct endpoint from the Spring controller
-        fetch(`http://localhost:6060/chatBot/${currentUserId}`)
+        fetch(`http://build-pro-backend.vercel.app:6060/chatBot/${currentUserId}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok");

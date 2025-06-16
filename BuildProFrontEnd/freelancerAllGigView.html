@@ -1117,7 +1117,7 @@
       async function loadGigs() {
         const token = localStorage.getItem("token");
         try {
-          const response = await fetch('http://localhost:6060/gigs/getPersonalGig', {
+          const response = await fetch('http://build-pro-backend.vercel.app:6060/gigs/getPersonalGig', {
             headers: {
               'Authorization': token
             }

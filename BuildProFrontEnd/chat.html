@@ -1452,7 +1452,7 @@
                     document.getElementById("contacts-list");
                   const token2 = localStorage.getItem("token");
 
-                  fetch("http://localhost:6060/chat/conversations", {
+                  fetch("http://build-pro-backend.vercel.app:6060/chat/conversations", {
                     headers: {
                       Authorization: `${token2}`,
                     },
@@ -1588,7 +1588,7 @@
                   }
 
                   fetch(
-                    `http://localhost:6060/chat/search?name=${encodeURIComponent(
+                    `http://build-pro-backend.vercel.app:6060/chat/search?name=${encodeURIComponent(
                       query
                     )}`,
                     {
@@ -1727,7 +1727,7 @@
 
                 // ✅ WebSocket Connection
                 function connectWebSocket() {
-                  const socket = new SockJS("http://localhost:6060/ws-chat"); // Your Spring Boot endpoint
+                  const socket = new SockJS("http://build-pro-backend.vercel.app:6060/ws-chat"); // Your Spring Boot endpoint
                   stompClient = Stomp.over(socket);
 
                   stompClient.connect({}, function (frame) {
@@ -1980,7 +1980,7 @@
                     }
 
                     const response = await fetch(
-                      "http://localhost:6060/chat/send",
+                      "http://build-pro-backend.vercel.app:6060/chat/send",
                       {
                         method: "POST",
                         headers: {
@@ -2122,7 +2122,7 @@
                 messagesArea.innerHTML = ""; // Clear previous messages
 
                 const token = localStorage.getItem("token");
-                const url = `http://localhost:6060/chat/messages?loggedUserId=${loggedUserId}&selectedUserId=${selectedUserId}`;
+                const url = `http://build-pro-backend.vercel.app:6060/chat/messages?loggedUserId=${loggedUserId}&selectedUserId=${selectedUserId}`;
 
                 try {
                   const response = await fetch(url, {
