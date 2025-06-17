@@ -350,7 +350,7 @@
 
         try {
           const response = await fetch(
-            `http://build-pro-backend.vercel.app:6060/gigs/getPersonalGig/${gigId}`,
+            `http://localhost:6060/gigs/getPersonalGig/${gigId}`,
             {
               method: "GET",
               headers: {
@@ -1673,7 +1673,7 @@
 
         try {
           const response = await fetch(
-            `http://build-pro-backend.vercel.app:6060/gigs/getPersonalGig/${gigId}`,
+            `http://localhost:6060/gigs/getPersonalGig/${gigId}`,
             {
               method: "GET",
               headers: {
@@ -1836,7 +1836,7 @@
 
         try {
           const res = await fetch(
-            `http://build-pro-backend.vercel.app:6060/gigs/updateGig/${gigId}`,
+            `http://localhost:6060/gigs/updateGig/${gigId}`,
             {
               method: "PUT",
               headers: {
@@ -1926,7 +1926,7 @@
           }
 
           try {
-            const response = await fetch("http://build-pro-backend.vercel.app:6060/users/update", {
+            const response = await fetch("http://localhost:6060/users/update", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

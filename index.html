@@ -750,7 +750,7 @@
                   }
               
                   try {
-                    const res = await fetch('http://build-pro-backend.vercel.app:6060/customerContact/contact', {
+                    const res = await fetch('http://localhost:6060/customerContact/contact', {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -773,7 +773,7 @@
                         showConfirmButton: false, 
                         confirmButtonColor: '#4CAF50'
                       });
-                      window.location.href = 'https://build-pro-front-end.vercel.app/BuildProHome/';
+                      window.location.href = 'http://localhost:8012/myPro/BuildPro/';
                     } else {
                       Swal.fire({
                         icon: 'error',

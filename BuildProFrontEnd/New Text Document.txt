@@ -1,5 +1,5 @@
 <script>
-								const baseURL = 'http://build-pro-backend.vercel.app:6060';
+								const baseURL = 'http://localhost:6060';
 								
 								fetch(`${baseURL}/tutorPost/allPosts`)
 								  .then(response => response.json())

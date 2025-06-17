@@ -6,7 +6,7 @@ import re
 app = Flask(__name__)
 
 # OpenAI client initialization
-openai_api_key = "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"  # Use your OpenAI API key here
+# openai_api_key = 
 client = OpenAI(api_key=openai_api_key)
 
 # Store messages in-memory per user
